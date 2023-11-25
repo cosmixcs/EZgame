@@ -1,13 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>сайт</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        #main {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #burger-menu {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #000; 
+            padding: 20px;
+            color: #fff;
+            transition: left 0.3s ease;
+            z-index: 2; 
+         }
+
+         #menu-icon {
+         position: fixed;
+         top: 20px;
+         left: 20px;
+         cursor: pointer;
+         z-index: 3; 
+         color: #fff;
+         font-size: 24px;
+         }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #ff23c8;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .button:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        #content {
+            padding: 20vh 0;
+            position: relative;
+        }
+
+        #inner-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            max-width: 500px;
+        }
+
+        #inner-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        
+        #burger-menu::before {
+            content: "10";
+            display: block;
+            color: #00ff00;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #burger-menu::after {
+            content: "2";
+            display: block;
+            color: #00ff00;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #burger-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #burger-menu ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Стили для Google Maps */
+        #google-map-container {
+            width: 100%;
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+
+        #google-map {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
+
 <body>
-    <img
-    src="img/L_height.webp"
-    alt="Clock">
+    <div id="main">
+        <!-- Добавление  видео 
+        <video src="videos(как зовут папку)/название_видео.mp4" type="video/mp4"(вместо mp4 можно любой, главное - указать)>      
+       </video> -->
+        <video autoplay loop muted>
+            <source src="https://colizeumarena.com/wp-content/uploads/2022/04/colizeum-main.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div id="burger-menu">
+        <!-- Добавление  пунктов в бургер-меню -->
+        <ul>
+            <li><a href="#">bronirovanie komputerov</a></li><!-- ставь вместо цифры что нужно -->
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+        </ul>
+    </div>
+
+    <div id="menu-icon">&#9776;</div>
+
+    <div id="footer">
+        <button class="button">about</button>
+        <button class="button">settings</button>
+        <button class="button">setup</button>
+    </div>
+
+    <div id="content">
+        <div id="inner-image">
+            <img src="путь_к_картинке.jpg" alt="картинка">
+        </div>
+
+        <!-- Добавление раздела "услуги/работы" с псевдоизображениями -->
+        <div id="our-works">
+            <div class="work">1</div>
+            <div class="work">2</div>
+            <div class="work">3</div>
+            <div class="work">4</div>
+            <div class="work">5</div>
+        </div>
+
+        <!-- Добавление раздела "адрес" с Google Maps -->
+        <div id="our-address">
+            <h2>Наш адрес</h2>
+            <div id="google-map-container">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d750.3137614126252!2d54.239875581078415!3d56.09159301171648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43e0a13c8794b00d%3A0xad262ca63b4fbd1f!2sEZ%20game!5e0!3m2!1sru!2sus!4v1696092545775!5m2!1sru!2sus"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- открытие/закрытие бургер-меню -->
+    <script>
+        var menuIcon = document.getElementById('menu-icon');
+        var burgerMenu = document.getElementById('burger-menu');
+
+        menuIcon.addEventListener('click', function () {
+            if (burgerMenu.style.left === '-250px' || burgerMenu.style.left === '') {
+                burgerMenu.style.left = '0px';
+            } else {
+                burgerMenu.style.left = '-250px';
+            }
+        });
+
+    </script>
 </body>
+
 </html>
